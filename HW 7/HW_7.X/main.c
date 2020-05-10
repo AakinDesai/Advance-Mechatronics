@@ -117,15 +117,30 @@ int main() {
         
         if (sum > 2500)
         {
-            l = (pos + 50)* 255/100;
-            r = 255 - l;
-            c[0].g = l;
-            c[3].r = r;
+            if (pos >= 0 & pos <= 30)
+            {
+                l = (pos)* 255/100;
+                c[1].g = l;
+            }
+            else if (pos < 0 & pos >= -35)
+            {
+               l = -(pos)* 255/100;
+               c[1].g = l; 
+            }
+            else if (pos > 30)
+            {
+                c[0].r = 255;
+            }
+            else
+            {
+                c[3].b = 255;
+            }
         }
         else
         {
-           c[0].g = 0;
-           c[3].r = 0; 
+           c[1].g = 0;
+           c[0].r = 0;
+           c[3].b = 0;
         }
         ws2812b_setColor(c,4);
     }
